@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f4f0e6;
+  --win-blue: #141c9a;
+  --win-blue-deep: #0a0e5c;
+  --win-gray: #c0c0c0;
+  --win-gray-light: #dfdfdf;
+  --win-shadow: #000000;
+  --pixel-green: #5dbb47;
+  --pixel-red: #d6362a;
+  --pixel-yellow: #f0c33b;
+  --pixel-ink: #000000;
+  
+  --bg-sky: #42528c;
+  --bg-grass: #6b9c3a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "VT323", "Press Start 2P", monospace;
+  background: var(--bg-sky);
+  color: var(--pixel-ink);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  image-rendering: pixelated;
+  overflow: hidden;
+}
+
+.pixel-font { font-family: "Press Start 2P", monospace; }
+.body-font {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: auto;
+  font-smooth: auto;
+}
+
+/* Background landscape */
+.pixel-landscape {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--bg-sky) 0%, var(--bg-sky) 70%, var(--bg-grass) 70%, var(--bg-grass) 100%);
+}
+
+.glow-ellipse {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 40px;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.4) 0%, transparent 70%);
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #f0c33b;
+}
+
+/* Window styling */
+.win-window {
+  background: var(--win-gray);
+  border: 4px solid var(--pixel-ink);
+  box-shadow: 6px 6px 0 0 rgba(0,0,0,0.5);
+}
+
+.win-titlebar {
+  background: var(--win-blue);
+  color: #fff;
+  border-bottom: 4px solid var(--pixel-ink);
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+  user-select: none;
+}
+.win-titlebar:active { cursor: grabbing; }
+
+.win-titlebar-black {
+  background: #333;
+  border-bottom: 4px solid var(--pixel-ink);
+}
+
+.win-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--win-gray);
+  border: 2px solid #fff;
+  border-bottom-color: #000;
+  border-right-color: #000;
+  padding: 4px 10px;
+  font-family: "VT323", monospace;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--pixel-ink);
+}
+.win-btn:active {
+  border: 2px solid #000;
+  border-bottom-color: #fff;
+  border-right-color: #fff;
+}
+
+.win-close-btn {
+  width: 24px;
+  height: 24px;
+  background: var(--pixel-red);
+  color: #fff;
+  border: 3px solid var(--pixel-ink);
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.win-min-btn {
+  width: 24px;
+  height: 24px;
+  background: var(--pixel-yellow);
+  border: 3px solid var(--pixel-ink);
+  cursor: pointer;
+}
+
+.win-sunken {
+  background: var(--cream);
+  border: 3px solid var(--pixel-ink);
+}
+
+/* Desktop Icon */
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--pixel-ink);
+  user-select: none;
+}
+.icon-label {
+  font-family: "VT323", monospace;
+  font-size: 16px;
+  margin-top: 8px;
+  text-align: center;
+  background: #e2e2e2;
+  border: 2px solid var(--pixel-ink);
+  padding: 2px 6px;
+}
+
+/* Taskbar */
+.win-taskbar {
+  background: var(--win-gray);
+  border-top: 4px solid var(--pixel-ink);
+}
+
+.start-btn {
+  background: var(--pixel-green);
+  color: #fff;
+  font-family: "Press Start 2P", monospace;
+  font-size: 14px;
+  padding: 6px 16px;
+  border: 4px solid var(--pixel-ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.start-btn:active { transform: translate(2px, 2px); }
+
+/* Animations */
+.loadbar-fill {
+  width: 0%;
+  animation: load 2.5s steps(15) forwards;
+}
+
+@keyframes load {
+  to {
+    width: 100%;
+  }
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.pixel-chip {
+  display: inline-block;
+  color: var(--pixel-ink);
+  border: 2px solid var(--pixel-ink);
+  box-shadow: 2px 2px 0 0 var(--pixel-ink);
+  padding: 4px 6px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
